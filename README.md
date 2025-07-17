@@ -66,10 +66,14 @@ None.
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-```
-var1: true
-var2: "string"
-var3: []
+### Custom path for files
+
+Define a custom path for your issue & issue.net files if you don't want to use your default ones.
+
+**example:**
+```yml
+issue:
+  path: "/opt/custom/storage"
 ```
 
 

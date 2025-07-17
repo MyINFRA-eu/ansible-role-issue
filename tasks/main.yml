@@ -1,9 +1,9 @@
 ---
 #####
 #
-# @name MyINFRA.eu ~ Ansible <name> Role
-# @version 2025.07-001
-# @since 2025.07-001
+# @name MyINFRA.eu ~ Ansible Issue Role
+# @version 2025.07.001
+# @since 2025.07.001
 #
 # @copyright (c) 2025 (and beyond) - Dennis de Houx, All In One, One For The code
 # @author Dennis de Houx <dennis@dehoux.be>
@@ -11,7 +11,7 @@
 #
 ###
 #
-# Ansible role for <description>
+# Ansible role to manage issue & issue.net files.
 #
 #####
 
@@ -19,12 +19,33 @@
   ansible.builtin.debug:
     msg:
       - "MyINFRA.eu ~ Ansible <name> Role"
-      - "Version   : 2025.07-001"
+      - "Version   : {{ myinfra_eu.issue.version }}"
       - "Copyright : (c) 2025 (and beyond) - Dennis de Houx, All In One, One For The code"
       - "Author    : Dennis de Houx <dennis@dehoux.be>"
       - "License   : https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en CC BY-NC-ND 4.0"
 
-- name: "Load: Gather facts tasks"
-  ansible.builtin.import_tasks: gather.yml
+- name: "ISSUE > Create/Manage Issue File"
+  copy:
+    src: "{{ src_file }}"
+    dest: /etc/issue
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  vars:
+    src_file: "{{ issue.path | default('files') + '/issue' }}"
   tags:
-    - <short_name>_gather_facts
+    - myinfra_issue
+
+- name: "ISSUE > Create/Manage Issue.net File"
+  copy:
+    src: "{{ src_file }}"
+    dest: /etc/issue.net
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  vars:
+    location: "{{ issue.path | default('files') + '/issue.net' }}"
+  tags:
+    - myinfra_issue
