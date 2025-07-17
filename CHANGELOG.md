@@ -8,7 +8,7 @@ All notable changes to ansible-role-issue will be documented in this file.
 
 - Initial release
 
-**Full Changelog**: https://github.com/MyINFRA-eu/ansible-role-routeros/compare/2025.07-002...2025.07-003
+**Full Changelog**: https://github.com/MyINFRA-eu/ansible-role-issue/commits/2025.07.001
 
 ### New Contributors
 - [@Dennis-de-Houx](https://github.com/orgs/MyINFRA-eu/people/Dennis-de-Houx)
