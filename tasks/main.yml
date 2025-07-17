@@ -25,26 +25,26 @@
       - "License   : https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en CC BY-NC-ND 4.0"
 
 - name: "ISSUE > Create/Manage Issue File"
-  copy:
+  ansible.builtin.copy:
     src: "{{ src_file }}"
     dest: /etc/issue
     owner: root
     group: root
-    mode: 0644
-    backup: yes
+    mode: "0644"
+    backup: true
   vars:
     src_file: "{{ issue.path | default('files') + '/issue' }}"
   tags:
     - myinfra_issue
 
 - name: "ISSUE > Create/Manage Issue.net File"
-  copy:
+  ansible.builtin.copy:
     src: "{{ src_file }}"
     dest: /etc/issue.net
     owner: root
     group: root
-    mode: 0644
-    backup: yes
+    mode: "0644"
+    backup: true
   vars:
     location: "{{ issue.path | default('files') + '/issue.net' }}"
   tags:

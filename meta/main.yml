@@ -19,7 +19,7 @@ galaxy_info:
         - jammy
         - noble
   galaxy_tags:
-    - issue.net
+    - "issue.net"
     - issue
     - ssh
     - login
